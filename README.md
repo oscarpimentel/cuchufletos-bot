@@ -1,17 +1,20 @@
 # cuchufletos-bot
 
-For a new telegram-command just add a new method in CuchuBot class from cuchubot.bots
-The method needs to start with 'tf_' and use the following signature:
+## Install
+
+## How to use
+For a new telegram-command just add a new method in CuchuBot class from cuchubot.bots. See [cuchubot.bots](cuchubot.bots)
+The method needs to start with `tf_` and use the following signature:
 
 ```python
 class CuchuBot():
-	def __init__(self):
-		...
+    def __init__(self):
+        ...
 
-	def tf_examplemethod(self, update, context):
-		...
-		do something
-		...
+    def tf_examplemethod(self, update, context):
+        ...
+        do_something(update, context)
+        ...
 ```
 
 Then, in telegram, the command will simply be:
@@ -29,6 +32,5 @@ Database for this repo: https://drive.google.com/drive/folders/1ghe9R6tAkdx5MKR-
 
 
 
----
-References:
+## References:
 https://www.codementor.io/@karandeepbatra/part-1-how-to-create-a-telegram-bot-in-python-in-under-10-minutes-19yfdv4wrq
