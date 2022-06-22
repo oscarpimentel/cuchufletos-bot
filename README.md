@@ -3,7 +3,7 @@
 ## Install
 
 ## How to use
-For a new telegram-command just add a new method in CuchuBot class from cuchubot.bots. See [cuchubot.bots](cuchubot.bots)
+For a new telegram-command just add a new method in CuchuBot class from cuchubot.bots. See [cuchubot/bots](cuchubot/bots)
 The method needs to start with `tf_` and use the following signature:
 
 ```python
