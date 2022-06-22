@@ -1,0 +1,8 @@
+[default]
+temp_path = './temp'
+data_path = './data'
+save_path = './save'
+config_path = './configs'
+caracola_filename = 'caracola.xlsx'
+caracola_audio_filename = 'caracola.mp3'
+persons_filename = 'persons.json'
