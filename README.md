@@ -1,4 +1,6 @@
-# cuchufletos-bot
+![](https://img.shields.io/badge/python-3.10-orange)
+# Cuchufletos Bot
+The cuchufletos
 
 ## Install
 
