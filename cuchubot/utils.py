@@ -101,7 +101,7 @@ def generate_cuchufletos_names(min_window=2,
                                ):
     filedir = os.path.join(settings.DATA_PATH, 'names.toml')
     d = toml.load(filedir)
-    names_prefixes = ['names_prefixes']
+    names_prefixes = d['names_prefixes']
     names = d['names']
     last_names = d['last_names']
     wrong_elements = get_wrong_elements()
