@@ -3,3 +3,5 @@ save/
 data/
 debug/
 dist/
+__pycache__/
+.vscode/
