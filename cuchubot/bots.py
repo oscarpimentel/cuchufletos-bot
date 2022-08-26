@@ -1,6 +1,7 @@
 import os
 import pprint
 import json
+from datetime import datetime
 
 import cambriantools as ct
 from dynaconf import settings
@@ -27,7 +28,10 @@ class Cuchubot():
                  uses_extra_info=False,
                  ):
         final_name, names_used, last_names_used = utils.generate_cuchufletos_names()
-        extra_info = ' (' + '+'.join([f'{name_used} {last_name_used}' for name_used, last_name_used in zip(names_used, last_names_used)]) + ')'
+        extra_info = ' (' + '+'.join([
+            f'{name_used} {last_name_used}'
+            for name_used, last_name_used in zip(names_used, last_names_used)
+        ]) + ')'
         txt = f'{final_name}{extra_info if uses_extra_info else ""}'
         self.actual_name = final_name
         return txt
@@ -66,8 +70,10 @@ class Cuchubot():
         if debug:
             return txt, audio_filedir
         else:
-            context.bot.send_message(chat_id=update.effective_chat.id, text=out_txt)
-            context.bot.send_audio(chat_id=update.effective_chat.id, audio=open(audio_filedir, 'rb'))
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=out_txt)
+            context.bot.send_audio(
+                chat_id=update.effective_chat.id, audio=open(audio_filedir, 'rb'))
 
     def tf_grade(self, update, context,
                  debug=False,
@@ -83,7 +89,8 @@ class Cuchubot():
         if debug:
             return out_txt
         else:
-            context.bot.send_message(chat_id=update.effective_chat.id, text=out_txt)
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=out_txt)
 
     def tf_curse(self, update, context,
                  debug=False,
@@ -99,8 +106,10 @@ class Cuchubot():
         if debug:
             return out_txt
         else:
-            context.bot.send_photo(chat_id=update.effective_chat.id, photo=img_url)
-            context.bot.send_message(chat_id=update.effective_chat.id, text=out_txt)
+            context.bot.send_photo(
+                chat_id=update.effective_chat.id, photo=img_url)
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=out_txt)
 
     def tf_name(self, update, context,
                 debug=False,
@@ -109,7 +118,8 @@ class Cuchubot():
         if debug:
             return out_txt
         else:
-            context.bot.send_message(chat_id=update.effective_chat.id, text=out_txt)
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=out_txt)
 
     def tf_fullname(self, update, context,
                     debug=False,
@@ -118,4 +128,22 @@ class Cuchubot():
         if debug:
             return out_txt
         else:
-            context.bot.send_message(chat_id=update.effective_chat.id, text=out_txt)
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=out_txt)
+
+    def tf_iswed(self, update, context, debug=False):
+        now = datetime.now()
+        if datetime.weekday(now) == 2:
+            img_name = 'normal' if now.month != 12 else 'christmas'
+            if debug:
+                return f'It is {img_name} Wednesday, my dudes'
+            img_url = os.path.join(settings.DATA_PATH, 
+                                   f'./images/iswed/{img_name}.jpg')
+            context.bot.send_photo(chat_id=update.effective_chat.id,
+                                   photo=open(img_url, 'rb'))
+        else:
+            out_txt = 'It is not Wednesday, my dudes :('
+            if debug:
+                return out_txt
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=out_txt)
